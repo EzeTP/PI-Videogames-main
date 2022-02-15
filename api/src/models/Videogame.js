@@ -22,15 +22,10 @@ module.exports = (sequelize) => {
       type: DataTypes.DATEONLY,
     },
     rating: {
-      type: DataTypes.FLOAT,
+      type: DataTypes.STRING,
     },
     platforms: {
       type: DataTypes.ARRAY(DataTypes.TEXT),
-    },
-    Dbcreated: {
-      type: DataTypes.BOOLEAN,
-      allowNull: false,
-      defaultValue: true,
     },
   });
 };
