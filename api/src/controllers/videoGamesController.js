@@ -75,19 +75,6 @@ const getGamesById = async (req, res, next) => {
       const apiurl = (
         await axios(`https://api.rawg.io/api/games/${id}?key=${APIKEY}`)
       ).data;
-
-      /* videogame = apiurl.map((e) => {
-        return {
-          id: e.id,
-          name: e.name,
-          genres: e.genres.map((e) => e.name),
-          img: e.background_image,
-          description: e.description,
-          released: e.released,
-          rating: e.rating,
-          patforms: e.genres.map((e) => e.name),
-        };
-      }); */
       videogame = {
         id: apiurl.id,
         name: apiurl.name,

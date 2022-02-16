@@ -1,0 +1,13 @@
+.container2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid grey;
+  padding: 8px;
+  margin: 10px;
+  height: 23rem;
+  img {
+    width: 25rem;
+    height: 20rem;
+  }
+}
