@@ -22,7 +22,7 @@ const getInfo = async (req, res, next) => {
 
     res.json({
       message: "generos",
-      data: genreUrl.data.results,
+      data: infoArr,
     });
   } catch (err) {
     next(err);

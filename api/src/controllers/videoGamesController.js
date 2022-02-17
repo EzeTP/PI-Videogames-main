@@ -28,9 +28,7 @@ const getAllGames = async (req, res, next) => {
       );
       dbGames = await Videogame.findAll(searching);
     } else {
-      apiGames = await axios(
-        `https://api.rawg.io/api/games?key=${APIKEY}&page_size=40&page=${page}`
-      );
+      apiGames = await axios(`https://api.rawg.io/api/games?key=${APIKEY}`);
       if (page === 1) apiGames = await Videogame.findAll(searching);
     }
     const filterApiGames = apiGames.data.results.map((g) => {
@@ -93,7 +91,7 @@ const getGamesById = async (req, res, next) => {
 };
 
 const newGame = async (req, res) => {
-  const { name, description, released, rating, platforms } = req.body;
+  const { name, description, released, rating, platforms, genres } = req.body;
   const createGame = await Videogame.create({
     name,
     description,
@@ -101,6 +99,21 @@ const newGame = async (req, res) => {
     rating,
     platforms,
   });
+  /* console.log(genres[0]);
+  genres.forEach(async (genre) => {
+    const actualGenre = await Genre.findOne({
+      where: { name: genre.name },
+    });
+    await createGame.addGenres(actualGenre.id);
+  }); */
+  for (const i of genres) {
+    const gen = await Genre.findOne({
+      where: {
+        name: i,
+      },
+    });
+    createGame.addGenres(gen);
+  }
 
   res.send(createGame);
 };

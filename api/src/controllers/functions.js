@@ -1,4 +1,4 @@
-const { Op } = require("sequelize");
+c; /* onst { Op } = require("sequelize");
 const { Videogames } = require("../db");
 
 const gamesDB = async () => {
@@ -40,4 +40,4 @@ const gamesName = async (name) => {
 module.exports = {
   gamesDB,
   gamesName,
-};
+}; */
