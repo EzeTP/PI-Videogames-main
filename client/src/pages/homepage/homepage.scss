@@ -5,4 +5,9 @@
   color: white;
   flex-direction: column;
   align-items: center;
+  .searchContainer {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+  }
 }

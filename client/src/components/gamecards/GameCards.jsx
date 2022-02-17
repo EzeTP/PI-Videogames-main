@@ -10,7 +10,7 @@ const GameCards = () => {
 
   useEffect(() => {
     dispatch(fetchAllGames());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="cardContainer">

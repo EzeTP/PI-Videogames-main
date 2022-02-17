@@ -1,6 +1,5 @@
 import React from "react";
 import "./gamecard.scss";
-/* import card from "./gamecard.module.scss"; */
 
 const GameCard = ({ id, name, rating, genres, img }) => {
   return (
