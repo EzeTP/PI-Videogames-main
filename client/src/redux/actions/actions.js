@@ -64,3 +64,12 @@ export const getByNames = (name) => async (dispatch) => {
     console.log(err);
   }
 };
+
+export const getDetail = (id) => async (dispatch) => {
+  try {
+    let { data } = await axios.get(`http://localhost:3001/videogames/${id}`);
+    dispatch({ type: GET_DETAIL, payload: data });
+  } catch (err) {
+    console.log(err);
+  }
+};

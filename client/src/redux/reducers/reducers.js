@@ -2,6 +2,7 @@ import {
   FETCH_GAMES,
   All_FILTERS,
   GET_GAMES_BY_NAME,
+  GET_DETAIL,
 } from "../actions/actions";
 
 const initialState = {
@@ -31,7 +32,11 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         videogames: action.payload,
       };
-
+    case GET_DETAIL:
+      return {
+        ...state,
+        gameDetail: action.payload,
+      };
     default:
       return state;
   }

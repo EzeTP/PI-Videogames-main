@@ -11,7 +11,6 @@ const GameCards = () => {
   useEffect(() => {
     dispatch(fetchAllGames());
   }, [dispatch]);
-
   return (
     <div className="cardContainer">
       <div className="filters"></div>
@@ -19,6 +18,7 @@ const GameCards = () => {
         {videogames.map((game) => (
           <GameCard
             key={game.id}
+            id={game.id}
             name={game.name}
             rating={game.rating}
             img={game.img}
