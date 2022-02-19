@@ -5,9 +5,10 @@ import { useDispatch } from "react-redux";
 import { getDetail } from "../../redux/actions/actions";
 
 const GameCard = ({ id, name, rating, genres, img }) => {
+  console.log(rating, genres);
   return (
     <div className="container2">
-      <Link to={`/detail/${id}`}>
+      <Link to={`/detail/${id}`} key={id}>
         <span>{name}</span>
         <span>{rating}</span>
         <span>{genres.join(", ")}</span>

@@ -15,7 +15,7 @@ export const MAYOR = "MAYOR";
 
 export const fetchAllGames = () => async (dispatch) => {
   try {
-    const request = await axios.get(`http://localhost:3001/videogames`);
+    let request = await axios.get(`http://localhost:3001/videogames`);
     const allgames = request.data;
     dispatch({ type: FETCH_GAMES, payload: allgames });
   } catch (err) {
@@ -26,7 +26,7 @@ export const fetchAllGames = () => async (dispatch) => {
 export const getAllGenres = () => async (dispatch) => {
   try {
     const request = await axios.get(`http://localhost:3001/genres`);
-    const allGenres = request.data;
+    const allGenres = request.data.result;
     dispatch({ type: GET_GENRES, payload: allGenres });
   } catch (err) {
     console.log(err);

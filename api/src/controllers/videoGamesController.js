@@ -3,7 +3,7 @@ const { Videogame, Genre } = require("../db");
 const { APIKEY } = process.env;
 const { Op } = require("sequelize");
 
-const getAllGames = async (req, res, next) => {
+/* const getAllGames = async (req, res, next) => {
   try {
     const { name, page } = req.query;
     let apiGames = [];
@@ -28,8 +28,10 @@ const getAllGames = async (req, res, next) => {
       );
       dbGames = await Videogame.findAll(searching);
     } else {
-      apiGames = await axios(`https://api.rawg.io/api/games?key=${APIKEY}`);
-      if (page === 1) apiGames = await Videogame.findAll(searching);
+      apiGames = await axios(
+        `https://api.rawg.io/api/games?key=${APIKEY}&page_size=40&page=${page}`
+      );
+      if (page === 1) dbGames = await Videogame.findAll({ include: Genre });
     }
     const filterApiGames = apiGames.data.results.map((g) => {
       return {
@@ -48,6 +50,78 @@ const getAllGames = async (req, res, next) => {
     res.send(videogames);
   } catch (err) {
     next(err);
+  }
+}; */
+const getAllGames = async (req, res, next) => {
+  try {
+    let pedido, pedi2, pedi3, pedidofinal;
+    if (req.query.name) {
+      gameName = req.query.name;
+      pedido = await axios.get(
+        `https://api.rawg.io/api/games?search=${gameName}&key=${APIKEY}`
+      );
+      pedidofinal = pedido.data.results;
+    } else {
+      pedido = await axios.get(
+        `https://api.rawg.io/api/games?key=${APIKEY}&page_size=40`
+      );
+
+      pedi2 = await axios.get(
+        `https://api.rawg.io/api/games?key=${APIKEY}&page=2&page_size=40`
+      );
+
+      pedi3 = await axios.get(
+        `https://api.rawg.io/api/games?key=${APIKEY}&page=5&page_size=20`
+      );
+
+      pedidofinal = [
+        ...pedido.data.results,
+        ...pedi2.data.results,
+        ...pedi3.data.results,
+      ];
+    }
+
+    const pedidoBaseDatos = await Videogame.findAll({ include: Genre });
+    if (pedidofinal || pedidoBaseDatos) {
+      let aux = pedidofinal.map((game) => {
+        return {
+          name: game.name,
+          genres: game.genres,
+          image: game.background_image,
+          rating: game.rating,
+          id: game.id,
+        };
+      });
+      let final = aux;
+      if (req.query.name) {
+        final = final.slice(0, 15);
+      } else {
+        final = [...pedidoBaseDatos, ...aux];
+      }
+
+      if (req.query.genreName && final) {
+        let selectedGenre = req.query.genreName;
+        final = final.filter((game) => {
+          return game.genres
+            ?.map((gnr) => {
+              return gnr.name;
+            })
+            .includes(selectedGenre);
+        }); //fin filter
+      }
+
+      if (final[0]) {
+        res.send(final);
+      } else {
+        res.json({
+          message: "Ningun videojuego cumple con los parametros de busqueda",
+        });
+      }
+    } else {
+      res.json({ message: "Error, algo salio mal" });
+    }
+  } catch (e) {
+    next(e);
   }
 };
 
