@@ -21,7 +21,6 @@ const getInfo = async (req, res, next) => {
     });
 
     res.json({
-      message: "generos",
       data: infoArr,
     });
   } catch (err) {

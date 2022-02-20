@@ -31,7 +31,10 @@ const DetailPage = () => {
     <div>
       <h5>{game.name}</h5>
       <div className="container">{game.description}</div>
-      <img src={game.background_image} alt="" />
+      <img
+        src={game.background_image ? game.background_image : game.image}
+        alt="img not found"
+      />
     </div>
   );
 };

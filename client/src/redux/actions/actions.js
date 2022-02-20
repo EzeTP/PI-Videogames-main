@@ -1,4 +1,5 @@
 import axios from "axios";
+export const CREATE_GAME = "CREATE_GAME";
 export const GET_GAMES_BY_NAME = "GET_GAMES_BY_NAME";
 export const FETCH_GAMES = "FETCH_GAMES";
 export const GET_DETAIL = "GET_DETAIL";
@@ -67,8 +68,22 @@ export const getByNames = (name) => async (dispatch) => {
 
 export const getDetail = (id) => async (dispatch) => {
   try {
-    let { data } = await axios.get(`http://localhost:3001/videogames/${id}`);
+    const request = await axios.get(`http://localhost:3001/videogames/${id}`);
+    const data = request.data;
     dispatch({ type: GET_DETAIL, payload: data });
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const createGame = (videogames) => async (dispatch) => {
+  try {
+    const request = await axios.get(
+      `http://localhost:3001/videogames`,
+      videogames
+    );
+    const data = request.data;
+    dispatch({ type: CREATE_GAME, payload: data });
   } catch (err) {
     console.log(err);
   }

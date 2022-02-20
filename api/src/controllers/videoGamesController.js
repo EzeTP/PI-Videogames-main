@@ -165,13 +165,15 @@ const getGamesById = async (req, res, next) => {
 };
 
 const newGame = async (req, res) => {
-  const { name, description, released, rating, platforms, genres } = req.body;
+  const { name, description, released, rating, platforms, genres, image } =
+    req.body;
   const createGame = await Videogame.create({
     name,
     description,
     released,
     rating,
     platforms,
+    image,
   });
   /* console.log(genres[0]);
   genres.forEach(async (genre) => {
