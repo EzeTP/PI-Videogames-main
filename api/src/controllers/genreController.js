@@ -19,15 +19,23 @@ const getInfo = async (req, res, next) => {
         where: { id: el.id, name: el.name },
       });
     });
-
-    res.json({
-      data: infoArr,
-    });
   } catch (err) {
     next(err);
   }
 };
 
+const getGender = async (req, res, next) => {
+  try {
+    let genderbd = await Genre.findAll({
+      attributes: { exclude: ["createdAt", "updatedAt"] },
+    });
+    res.status(200).json(genderbd);
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   getInfo,
+  getGender,
 };

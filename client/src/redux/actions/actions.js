@@ -27,7 +27,7 @@ export const fetchAllGames = () => async (dispatch) => {
 export const getAllGenres = () => async (dispatch) => {
   try {
     const request = await axios.get(`http://localhost:3001/genres`);
-    const allGenres = request.data.result;
+    const allGenres = request.data;
     dispatch({ type: GET_GENRES, payload: allGenres });
   } catch (err) {
     console.log(err);

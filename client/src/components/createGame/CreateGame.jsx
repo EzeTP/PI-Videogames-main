@@ -4,7 +4,7 @@ import { createGame, getAllGenres } from "../../redux/actions/actions";
 import { useNavigate } from "react-router-dom";
 
 const CreateGame = () => {
-  const gender = useSelector((state) => state.genres);
+  const genre = useSelector((state) => state.genres);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -19,7 +19,7 @@ const CreateGame = () => {
   });
 
   const handlePlatSelec = (e) => {
-    if (setValues.platforms.includes(e.target.value)) {
+    if (value.platforms.includes(e.target.value)) {
       let plats = value.platforms.filter((p) => p !== e.target.value);
       setValues({
         ...value,
@@ -34,7 +34,7 @@ const CreateGame = () => {
   };
 
   const handleGenSelec = (e) => {
-    if (setValues.genres.includes(e.target.value)) {
+    if (value.genres.includes(e.target.value)) {
       let genr = value.genres.filter((p) => p !== e.target.value);
       setValues({
         ...value,
@@ -140,6 +140,30 @@ const CreateGame = () => {
           <div>
             <label> Genres </label>
           </div>
+          <select
+            title="at least 1 opcion"
+            required
+            multiple
+            className="genresForm"
+            name="genres"
+            value={value.genres}
+            onChange={handleGenSelec}
+          >
+            {
+              (console.log(genre),
+              value.genres.length <= 7 ? (
+                genre.map((e) => {
+                  return (
+                    <option key={e.id} value={e.name}>
+                      {e.name}
+                    </option>
+                  );
+                })
+              ) : (
+                <option disabled></option>
+              ))
+            }
+          </select>
         </div>
       </form>
     </div>
