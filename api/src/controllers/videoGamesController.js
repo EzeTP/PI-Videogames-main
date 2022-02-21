@@ -175,13 +175,7 @@ const newGame = async (req, res) => {
     platforms,
     image,
   });
-  /* console.log(genres[0]);
-  genres.forEach(async (genre) => {
-    const actualGenre = await Genre.findOne({
-      where: { name: genre.name },
-    });
-    await createGame.addGenres(actualGenre.id);
-  }); */
+
   for (const i of genres) {
     const gen = await Genre.findOne({
       where: {
