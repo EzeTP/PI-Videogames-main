@@ -23,7 +23,6 @@ const getInfo = async (req, res, next) => {
     next(err);
   }
 };
-
 const getGender = async (req, res, next) => {
   try {
     let genderbd = await Genre.findAll({

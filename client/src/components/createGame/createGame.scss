@@ -1,0 +1,36 @@
+.Container {
+  display: flex;
+  justify-content: center;
+  .formContainer {
+    justify-content: center;
+    display: flex;
+    width: 30rem;
+    margin-top: 40px;
+    border: 1px solid #00ff40;
+    label {
+      font-size: 20px;
+    }
+    input {
+      width: 100%;
+      background: none;
+      color: #00ff40;
+      border: none;
+      outline: none;
+    }
+    textarea {
+      background: none;
+      color: #00ff40;
+      border: 1px dotted #00ff40;
+      outline: none;
+    }
+    select {
+      background: none;
+      color: #00ff40;
+      border: 1px dotted #00ff40;
+      outline: none;
+    }
+    .platformsForm {
+      margin-top: 20px;
+    }
+  }
+}

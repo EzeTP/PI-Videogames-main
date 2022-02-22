@@ -1,3 +1,4 @@
+import Order from "../../components/order/Order";
 import {
   FETCH_GAMES,
   All_FILTERS,
@@ -5,6 +6,11 @@ import {
   GET_DETAIL,
   CREATE_GAME,
   GET_GENRES,
+  ASC,
+  DESC,
+  RATING_ASC,
+  RATING_DESC,
+  ORDER,
 } from "../actions/actions";
 
 const initialState = {
@@ -52,6 +58,35 @@ export default function rootReducer(state = initialState, action) {
         genres: action.payload,
       };
 
+    case ASC:
+      let sort = state.videogames.sort((a, b) =>
+        a.name.toLowerCase().localeCompare(b.name.toLowerCase())
+      );
+      return {
+        ...state,
+        videogames: sort,
+      };
+
+    case DESC:
+      let sorted = state.videogames.sort((a, b) =>
+        b.name.toLowerCase().localeCompare(a.name.toLowerCase())
+      );
+      return {
+        ...state,
+        videogames: sorted,
+      };
+    case RATING_ASC:
+      let ratingSort = state.videogames.sort((a, b) => a.rating - b.rating);
+      return {
+        ...state,
+        videogames: ratingSort,
+      };
+    case RATING_DESC:
+      let ratingSorted = state.videogames.sort((a, b) => b.rating - a.rating);
+      return {
+        ...state,
+        videogames: ratingSorted,
+      };
     default:
       return state;
   }

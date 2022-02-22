@@ -156,6 +156,11 @@ const getGamesById = async (req, res, next) => {
         released: apiurl.released,
         rating: apiurl.rating,
         platforms: apiurl.parent_platforms.flatMap((e) => e.platform.name),
+        additionalImg: apiurl.background_image_additional,
+        website: apiurl.website,
+        metacritic: apiurl.metacritic,
+        metacriticUrl: apiurl.metacritic_url,
+        reddit: apiurl.reddit_url,
       };
     }
     res.send(videogame);

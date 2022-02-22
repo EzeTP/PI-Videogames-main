@@ -11,8 +11,9 @@ export const CLEAR_FILTERS = "CLEAR_FILTERS";
 export const SORT_GAMES = "SORT_GAMES";
 export const ASC = "ASC";
 export const DESC = "DESC";
-export const MIN = "MIN";
-export const MAYOR = "MAYOR";
+export const RATING_ASC = "RATING_ASC";
+export const RATING_DESC = "RATING_DESC";
+export const ORDER = "ORDER";
 
 export const fetchAllGames = () => async (dispatch) => {
   try {
@@ -33,8 +34,8 @@ export const getAllGenres = () => async (dispatch) => {
     console.log(err);
   }
 };
-
-export const getFilter =
+/* 
+export const getFilter =  
   (showDb = false) =>
   async (dispatch) => {
     try {
@@ -53,7 +54,7 @@ export const getFilter =
     } catch (err) {
       console.log(err);
     }
-  };
+  }; */
 export const getByNames = (name) => async (dispatch) => {
   try {
     const request = await axios.get(
@@ -78,7 +79,7 @@ export const getDetail = (id) => async (dispatch) => {
 
 export const createGame = (videogames) => async (dispatch) => {
   try {
-    const request = await axios.get(
+    const request = await axios.post(
       `http://localhost:3001/videogames`,
       videogames
     );
@@ -87,4 +88,17 @@ export const createGame = (videogames) => async (dispatch) => {
   } catch (err) {
     console.log(err);
   }
+};
+
+export const sortAsc = (order) => async (dispatch) => {
+  dispatch({ type: ASC, payload: order });
+};
+export const sortDesc = (order) => async (dispatch) => {
+  dispatch({ type: DESC, payload: order });
+};
+export const ratingAsc = (order) => async (dispatch) => {
+  dispatch({ type: RATING_ASC, payload: order });
+};
+export const ratingDesc = (order) => async (dispatch) => {
+  dispatch({ type: RATING_DESC, payload: order });
 };

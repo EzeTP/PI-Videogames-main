@@ -1,15 +1,17 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAllGames } from "../../redux/actions/actions";
+import Order from "../order/Order";
 import GameCard from "./GameCard";
 import "./gamecards.scss";
 
 const GameCards = () => {
   let videogames = useSelector((state) => state.videogames);
   let dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(fetchAllGames());
-  }, []);
+  }, [dispatch]);
 
   const [state, setState] = useState({
     paginaActual: 0,
@@ -20,6 +22,7 @@ const GameCards = () => {
       setState({ paginaActual: state.paginaActual - event.target.value });
     }
   };
+
   const handleNext = (event) => {
     if (state.paginaActual !== final.length - 1) {
       setState({
@@ -45,17 +48,19 @@ const GameCards = () => {
       final.pop();
     }
   }
-  console.log(final[state.paginaActual]);
   return (
     <div className="cardContainer">
       <div className="filters">
-        <button value={1} onClick={handlePrev}>
-          PREV
-        </button>
-        <button value={1} onClick={handleNext}>
-          NEXT
-        </button>
+        <div className="pagination">
+          <button value={1} onClick={handlePrev}>
+            PREV
+          </button>
+          <button value={1} onClick={handleNext}>
+            NEXT
+          </button>
+        </div>
       </div>
+      <div className="order"></div>
       <div className="gameList">
         {final[state.paginaActual] &&
           final[state.paginaActual].map((game) => (
@@ -65,9 +70,13 @@ const GameCards = () => {
               name={game.name}
               rating={game.rating}
               img={game.image}
-              genres={game.genres.map((g) => {
-                return g.name;
-              })}
+              genres={
+                game.Genres
+                  ? game.Genres.map((g) => g.name)
+                  : game.genres.map((g) => {
+                      return g.name;
+                    })
+              }
             />
           ))}
       </div>
