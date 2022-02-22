@@ -14,6 +14,9 @@ export const DESC = "DESC";
 export const RATING_ASC = "RATING_ASC";
 export const RATING_DESC = "RATING_DESC";
 export const ORDER = "ORDER";
+export const FILTER_GENRE = "FILTER_GENDER";
+export const FILTER_API = "FILTER_API";
+export const FILTER_DB = "FILTER_DB";
 
 export const fetchAllGames = () => async (dispatch) => {
   try {
@@ -101,4 +104,16 @@ export const ratingAsc = (order) => async (dispatch) => {
 };
 export const ratingDesc = (order) => async (dispatch) => {
   dispatch({ type: RATING_DESC, payload: order });
+};
+
+export const filterGender = (genderDb) => async (dispatch) => {
+  dispatch({ type: FILTER_GENRE, payload: genderDb });
+};
+
+export const filterApi = (api) => async (dispatch) => {
+  dispatch({ type: FILTER_API, payload: api });
+};
+
+export const filterDb = (db) => async (dispatch) => {
+  dispatch({ type: FILTER_DB, payload: db });
 };

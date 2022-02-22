@@ -1,6 +1,13 @@
 body {
   background: #24282f;
   font-family: "Roboto";
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+  scrollbar-width: none;
+  cursor: pointer;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 .cards {

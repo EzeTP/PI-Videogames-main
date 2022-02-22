@@ -13,7 +13,7 @@ const SearchBar = ({ onSearch }) => {
         type="text"
         className="search"
         autoComplete="off"
-        placeholder="Buscar"
+        placeholder="Search..."
         onChange={handleOnSearch}
       />
     </div>

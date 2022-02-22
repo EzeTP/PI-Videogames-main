@@ -10,7 +10,9 @@ import {
   DESC,
   RATING_ASC,
   RATING_DESC,
-  ORDER,
+  FILTER_GENRE,
+  FILTER_API,
+  FILTER_DB,
 } from "../actions/actions";
 
 const initialState = {
@@ -18,14 +20,19 @@ const initialState = {
   genres: [],
   gameDetail: {},
   createGame: {},
+  videogamesDb: [],
 };
 
 export default function rootReducer(state = initialState, action) {
   switch (action.type) {
     case FETCH_GAMES:
       return {
+        /* ...state,
+        videogamesDb: ...state.videogames, ...action.payload],
+        videogames: ...state.videogames, ...action.payload], */
         ...state,
-        videogames: [...state.videogames, ...action.payload],
+        videogames: action.payload,
+        videogamesDb: action.payload,
       };
     case All_FILTERS:
       return {
@@ -86,6 +93,33 @@ export default function rootReducer(state = initialState, action) {
       return {
         ...state,
         videogames: ratingSorted,
+      };
+
+    case FILTER_GENRE:
+      const alljuegos = state.videogamesDb;
+      const generos = alljuegos.filter(
+        (c) =>
+          c.Genres?.find((c) => c.name === action.payload) ||
+          c.genres?.find((c) => c.name === action.payload)
+      );
+      const statusFiltered = action.payload === "All" ? alljuegos : generos;
+      return {
+        ...state,
+        videogames: statusFiltered,
+      };
+
+    case FILTER_API:
+      let api = state.videogamesDb.filter((e) => Number.isInteger(e.id));
+      return {
+        ...state,
+        videogames: api,
+      };
+
+    case FILTER_DB:
+      let db = state.videogamesDb.filter((e) => !Number.isInteger(e.id));
+      return {
+        ...state,
+        videogames: db.length === 0 ? "empty" : db,
       };
     default:
       return state;

@@ -8,7 +8,7 @@ const CreateGame = () => {
   const genre = useSelector((state) => state.genres);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
+  console.log(genre);
   const [values, setValues] = useState({
     name: "",
     description: "",

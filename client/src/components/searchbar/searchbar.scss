@@ -1,11 +1,15 @@
-.search {
-  background-color: white;
+input {
+  background-color: transparent;
   border: none;
-  color: #83e883;
+  color: #00ff40;
   font-size: 1.5rem;
   font-weight: 300;
   width: 15rem;
   display: flex;
   border-radius: 12px;
   margin-right: 70px;
+  outline: none;
+}
+::placeholder {
+  color: #00ff40;
 }

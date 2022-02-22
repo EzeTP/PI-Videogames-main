@@ -7,6 +7,7 @@ import {
   sortAsc,
   sortDesc,
 } from "../../redux/actions/actions";
+import "./order.scss";
 
 const Order = () => {
   let dispatch = useDispatch();
