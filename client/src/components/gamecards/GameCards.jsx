@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAllGames } from "../../redux/actions/actions";
-import Order from "../order/Order";
+import Loading from "../loading/Loading";
 import GameCard from "./GameCard";
 import "./gamecards.scss";
 
@@ -50,35 +50,41 @@ const GameCards = () => {
   }
   return (
     <div className="cardContainer">
-      <div className="filters">
-        <div className="pagination">
-          <button value={1} onClick={handlePrev}>
-            PREV
-          </button>
-          <button value={1} onClick={handleNext}>
-            NEXT
-          </button>
-        </div>
+      <div className="pagination">
+        <button value={1} onClick={handlePrev}>
+          PREV
+        </button>
+        <button value={1} onClick={handleNext}>
+          NEXT
+        </button>
       </div>
       <div className="order"></div>
       <div className="gameList">
-        {final[state.paginaActual] &&
-          final[state.paginaActual].map((game) => (
-            <GameCard
-              key={game.id}
-              id={game.id}
-              name={game.name}
-              rating={game.rating}
-              img={game.image}
-              genres={
-                game.Genres
-                  ? game.Genres.map((g) => g.name)
-                  : game.genres.map((g) => {
-                      return g.name;
-                    })
-              }
-            />
-          ))}
+        {
+          (console.log(final[state.paginaActual].length),
+          final[state.paginaActual].length === 0 ? (
+            <div className="loading">
+              <Loading />
+            </div>
+          ) : (
+            final[state.paginaActual].map((game) => (
+              <GameCard
+                key={game.id}
+                id={game.id}
+                name={game.name}
+                rating={game.rating}
+                img={game.image}
+                genres={
+                  game.Genres
+                    ? game.Genres.map((g) => g.name)
+                    : game.genres.map((g) => {
+                        return g.name;
+                      })
+                }
+              />
+            ))
+          ))
+        }
       </div>
     </div>
   );

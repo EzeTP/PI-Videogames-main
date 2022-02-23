@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import {
+  FilterByOrder,
   ratingAsc,
   ratingDesc,
   sortAsc,
@@ -11,33 +11,43 @@ import "./order.scss";
 
 const Order = () => {
   let dispatch = useDispatch();
-  let navigate = useNavigate();
 
-  const handleOnChange = (e) => {
+  /*  const handleOnChange = (e) => {
     if (e.target.value === "asc") {
       dispatch(sortAsc("asc"));
-      navigate("/home");
     } else if (e.target.value === "desc") {
       dispatch(sortDesc("desc"));
-      navigate("/home");
     } else if (e.target.value === "ratingAsc") {
       dispatch(ratingAsc("ratingAsc"));
-      navigate("/home");
     } else if (e.target.value === "ratingDesc") {
       dispatch(ratingDesc("ratingDesc"));
-      navigate("/home");
+    }
+  }; */
+
+  const handleAlph = (e) => {
+    if (e.target.value === "a-z") {
+      dispatch(FilterByOrder("a-z"));
+    } else if (e.target.value === "z-a") {
+      dispatch(FilterByOrder("z-a"));
+    } else if (e.target.value === "") {
+      dispatch(FilterByOrder(""));
+    } else if (e.target.value === "asc") {
+      dispatch(ratingAsc("asc"));
+    } else if (e.target.value === "desc") {
+      dispatch(ratingAsc("desc"));
     }
   };
+
   /* useEffect(() => {}, []); */
 
   return (
     <div>
-      <select defaultValue={"default"} onChange={(e) => handleOnChange(e)}>
-        <option value="default">ASC | DESC</option>
-        <option value="asc"> A TO Z</option>
-        <option value="desc">Z TO A</option>
-        <option value="ratingAsc"> RATING ASC </option>
-        <option value="ratingDesc"> RATING DESC</option>
+      <select defaultValue={"default"} onChange={handleAlph}>
+        <option value="">ASC | DESC</option>
+        <option value="a-z"> A TO Z</option>
+        <option value="z-a">Z TO A</option>
+        <option value="asc"> ASC </option>
+        <option value="desc"> DESC</option>
       </select>
     </div>
   );

@@ -1,7 +1,6 @@
 import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import {
   filterApi,
   filterDb,
@@ -12,25 +11,20 @@ import {
 const Filter = () => {
   const genre = useSelector((state) => state.genres);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const handleGenre = (e) => {
     if (e.target.value) {
       dispatch(filterGender(e.target.value));
-      navigate("/home");
     }
   };
 
   const handleApiorDb = (e) => {
     if (e.target.value === "api") {
       dispatch(filterApi("api"));
-      navigate("/home");
     } else if (e.target.value === "db") {
       dispatch(filterDb("db"));
-      navigate("/home");
     } else if (e.target.value === "All") {
       dispatch(filterGender("All"));
-      navigate("/home");
     }
   };
   useEffect(() => {

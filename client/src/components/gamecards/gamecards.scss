@@ -13,4 +13,29 @@
     flex-direction: wrap;
     justify-content: center;
   }
+  .pagination {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    button {
+      background: transparent;
+      border-radius: 20px;
+      color: #00ff40;
+      font-family: Roboto;
+      font-size: 20px;
+      font-weight: 100;
+      padding: 20px;
+      border: none;
+      text-decoration: none;
+      cursor: pointer;
+      text-align: center;
+    }
+  }
+  .loading {
+    margin-top: 22rem;
+    width: 100%;
+    display: grid;
+    align-items: center;
+  }
 }

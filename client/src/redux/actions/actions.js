@@ -17,6 +17,7 @@ export const ORDER = "ORDER";
 export const FILTER_GENRE = "FILTER_GENDER";
 export const FILTER_API = "FILTER_API";
 export const FILTER_DB = "FILTER_DB";
+export const FILTER_ALPH = "FILTER_ALPH";
 
 export const fetchAllGames = () => async (dispatch) => {
   try {
@@ -37,8 +38,8 @@ export const getAllGenres = () => async (dispatch) => {
     console.log(err);
   }
 };
-/* 
-export const getFilter =  
+
+/* export const getFilter =  
   (showDb = false) =>
   async (dispatch) => {
     try {
@@ -57,7 +58,8 @@ export const getFilter =
     } catch (err) {
       console.log(err);
     }
-  }; */
+  };  */
+
 export const getByNames = (name) => async (dispatch) => {
   try {
     const request = await axios.get(
@@ -93,18 +95,20 @@ export const createGame = (videogames) => async (dispatch) => {
   }
 };
 
-export const sortAsc = (order) => async (dispatch) => {
-  dispatch({ type: ASC, payload: order });
+export const FilterByOrder = (order) => async (dispatch) => {
+  dispatch({ type: FILTER_ALPH, payload: order });
 };
-export const sortDesc = (order) => async (dispatch) => {
+/* export const sortDesc = (order) => async (dispatch) => {
   dispatch({ type: DESC, payload: order });
-};
+}; */
+
 export const ratingAsc = (order) => async (dispatch) => {
   dispatch({ type: RATING_ASC, payload: order });
 };
-export const ratingDesc = (order) => async (dispatch) => {
+
+/* export const ratingDesc = (order) => async (dispatch) => {
   dispatch({ type: RATING_DESC, payload: order });
-};
+}; */
 
 export const filterGender = (genderDb) => async (dispatch) => {
   dispatch({ type: FILTER_GENRE, payload: genderDb });
