@@ -38,8 +38,6 @@ const Order = () => {
     }
   };
 
-  /* useEffect(() => {}, []); */
-
   return (
     <div>
       <select defaultValue={"default"} onChange={handleAlph}>

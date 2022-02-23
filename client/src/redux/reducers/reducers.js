@@ -102,10 +102,10 @@ export default function rootReducer(state = initialState, action) {
     case RATING_ASC:
       const asc = state.videogames;
       const order = asc.slice().sort((a, b) => {
-        if (Number(a.rating) > Number(b.rating)) {
+        if (a.rating > b.rating) {
           return 1;
         }
-        if (Number(b.rating) > Number(a.rating)) {
+        if (b.rating > a.rating) {
           return -1;
         }
         return 0;
