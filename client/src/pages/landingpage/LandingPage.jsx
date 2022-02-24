@@ -1,14 +1,32 @@
 import React from "react";
 import "./landingpage.scss";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import video from "../../assets/ae5991dc05cb085797dcdaf78d9dd81c.mp4";
 
 const LandingPage = () => {
+  const navigate = useNavigate();
+
+  const handleOnclick = () => {
+    navigate("/home");
+  };
+
   return (
     <div className="landing">
-      <h1>Hello There</h1>
-      <Link to="/home">
-        <button>Enter</button>
-      </Link>
+      <video
+        autoPlay
+        loop
+        muted
+        className="video"
+        onClick={handleOnclick}
+        style={{
+          marginLeft: "60px",
+          width: "90%",
+          height: "1500px",
+          objectFit: "cover",
+        }}
+      >
+        <source src={video} type="video/mp4" />¿
+      </video>
     </div>
   );
 };

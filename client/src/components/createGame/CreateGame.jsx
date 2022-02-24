@@ -3,12 +3,18 @@ import { useDispatch, useSelector } from "react-redux";
 import { createGame, getAllGenres } from "../../redux/actions/actions";
 import { useNavigate } from "react-router-dom";
 import "./createGame.scss";
+import {
+  regexName,
+  regexrating,
+  regexText,
+  regexUrl,
+  validateName,
+} from "./validations";
 
 const CreateGame = () => {
   const genre = useSelector((state) => state.genres);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  console.log(genre);
   const [values, setValues] = useState({
     name: "",
     description: "",
@@ -96,7 +102,7 @@ const CreateGame = () => {
             required
             type="text"
             className="nameForm"
-            placeholder="Name of the game"
+            placeholder="e.g 'Henrymon' "
             value={values.name}
             onChange={handleOnChange}
             name="name"
@@ -127,6 +133,7 @@ const CreateGame = () => {
             value={values.rating}
             onChange={handleOnChange}
             name="rating"
+            pattern={regexrating}
           />
           <div>
             <label> Image </label>
@@ -140,6 +147,7 @@ const CreateGame = () => {
             value={values.image}
             onChange={handleOnChange}
             name="image"
+            pattern={regexUrl}
           />
           <div>
             <label> Description </label>
@@ -153,8 +161,8 @@ const CreateGame = () => {
             value={values.description}
             name="description"
             onChange={handleOnChange}
-            maxLength="500"
             title="maximo 2000 caracteres"
+            pattern={regexText}
           ></textarea>
           <div className="genresForm">
             <div>

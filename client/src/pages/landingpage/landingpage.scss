@@ -1,17 +1,23 @@
 .landing {
-  background-image: url(../../assets/landing.jpg);
-  display: flex;
-  height: 100vh;
-  color: white;
-  flex-direction: column;
-  align-items: center;
-
+  background-color: #000000;
   h1 {
     font-size: 50px;
   }
   button {
-    background-color: lightblue;
-    border-radius: 14px;
-    border: none;
+    background: #061e2e;
+    background-image: linear-gradient(to bottom, #061e2e, #1fdb35);
+    -webkit-border-radius: 28;
+    -moz-border-radius: 28;
+    border-radius: 28px;
+    font-family: Arial;
+    color: #0cf000;
+    font-size: 39px;
+    padding: 31px 40px 34px 40px;
+    text-decoration: none;
+    &:hover {
+      background: #0dbf0d;
+      background-image: linear-gradient(to bottom, #0dbf0d, #000000);
+      text-decoration: none;
+    }
   }
 }
