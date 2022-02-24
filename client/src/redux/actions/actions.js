@@ -18,6 +18,7 @@ export const FILTER_GENRE = "FILTER_GENDER";
 export const FILTER_API = "FILTER_API";
 export const FILTER_DB = "FILTER_DB";
 export const FILTER_ALPH = "FILTER_ALPH";
+export const PROBANDO = "PROBANDO";
 
 export const fetchAllGames = () => async (dispatch) => {
   try {
@@ -114,10 +115,10 @@ export const filterGender = (genderDb) => async (dispatch) => {
   dispatch({ type: FILTER_GENRE, payload: genderDb });
 };
 
-export const filterApi = (api) => async (dispatch) => {
-  dispatch({ type: FILTER_API, payload: api });
+export const filterApi = (api) => {
+  return { type: FILTER_API, payload: api };
 };
 
-export const filterDb = (db) => async (dispatch) => {
-  dispatch({ type: FILTER_DB, payload: db });
+export const filterDb = (db) => {
+  return { type: FILTER_DB, payload: db };
 };

@@ -95,7 +95,7 @@ const CreateGame = () => {
       <div className="formContainer">
         <form onSubmit={handleOnSubmit}>
           <div>
-            <label> Name</label>
+            <label>Name</label>
           </div>
           <input
             title="Name"
@@ -119,7 +119,6 @@ const CreateGame = () => {
             value={values.released}
             onChange={handleOnChange}
             name="released"
-            maxLength="11"
           />
           <div>
             <label> Rating </label>
@@ -150,7 +149,7 @@ const CreateGame = () => {
             pattern={regexUrl}
           />
           <div>
-            <label> Description </label>
+            <label>Description</label>
           </div>
           <textarea
             required

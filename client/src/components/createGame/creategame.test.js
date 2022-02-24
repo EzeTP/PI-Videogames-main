@@ -1,11 +1,11 @@
-/* import React from "react";
+import React from "react";
 import CreateGame from "./CreateGame";
 import { render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
 import store from "../../redux/store/store";
 import { BrowserRouter } from "react-router-dom";
 
-describe("crear el form", () => {
+/* describe("crear el form", () => {
   const componente = (
     <Provider store={store}>
       <BrowserRouter>
@@ -20,30 +20,36 @@ describe("crear el form", () => {
     expect(testing).toBeInTheDocument();
   });
 }); */
-import React from "react";
-import { render } from "@testing-library/react";
-import { shallow, mount } from "enzyme";
-import Form, { validate } from "./Form.jsx";
 
 describe("<Form /> Mounted", () => {
-  let wrapper;
-  beforeEach(() => {
-    wrapper = mount(<Form />);
-  });
-  it('El form debe tener un label que diga: "Username:"', () => {
-    const { container } = render(<Form />);
-    const element = container.querySelectorAll("label")[0];
-    expect(element.innerHTML).toBe("Username:");
+  const component = (
+    <Provider store={store}>
+      <BrowserRouter>
+        <CreateGame />
+      </BrowserRouter>
+    </Provider>
+  );
+
+  it('El form debe tener un label que diga: "Name:"', () => {
+    render(component);
+    const element = screen.getByTitle(/Name/i);
+    expect(element.className).toBe("nameForm");
   });
 
-  it('El form debe tener un label que diga: "Password:"', () => {
-    const { container } = render(<Form />);
+  it('El form debe tener un label que diga: "Name:"', () => {
+    render(component);
+    const element = screen.getByTitle(/Released/i);
+    expect(element.className).toBe("releasedForm");
+  });
+
+  /* it('El form debe tener un label que diga: "Password:"', () => {
+    const { container } = render(<CreateGame />);
     const element = container.querySelectorAll("label")[1];
     expect(element.innerHTML).toBe("Password:");
   });
 
   it('El form debe tener un input con name "username" y type "text"', () => {
-    const { container } = render(<Form />);
+    const { container } = render(<CreateGame />);
     const element = container.querySelectorAll("input")[0];
     expect(element.type).toBe("text");
     expect(element.name).toBe("username");
@@ -84,5 +90,5 @@ describe("<Form /> Mounted", () => {
       .simulate("change", { target: { name: "password", value: "hola123" } });
     const ele = wrapper.find('input[name="password"]');
     expect(ele.hasClass("danger")).toBeFalsy();
-  });
+  }); */
 });
