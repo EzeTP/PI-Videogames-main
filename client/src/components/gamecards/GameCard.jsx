@@ -1,6 +1,6 @@
 import React from "react";
 import "./gamecard.scss";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const GameCard = ({ id, name, rating, genres, img }) => {
   const navigate = useNavigate();
@@ -10,7 +10,6 @@ const GameCard = ({ id, name, rating, genres, img }) => {
   };
   return (
     <div className="cards" onClick={handleOnClick}>
-      {/* <Link to={`/detail/${id}`} key={id}></Link> */}
       <div className="card">
         <img src={img} alt="img not found" />
         <figcaption>
@@ -19,12 +18,12 @@ const GameCard = ({ id, name, rating, genres, img }) => {
             {rating < 2
               ? "⭐"
               : rating < 3
-                ? "⭐⭐"
-                : rating < 4
-                  ? "⭐⭐⭐"
-                  : rating < 5
-                    ? "⭐⭐⭐⭐"
-                    : "⭐⭐⭐⭐⭐"}
+              ? "⭐⭐"
+              : rating < 4
+              ? "⭐⭐⭐"
+              : rating < 5
+              ? "⭐⭐⭐⭐"
+              : "⭐⭐⭐⭐⭐"}
           </span>
           <span>{genres.join(", ")}</span>
         </figcaption>

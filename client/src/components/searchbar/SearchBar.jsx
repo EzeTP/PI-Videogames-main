@@ -1,11 +1,19 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { getByNames } from "../../redux/actions/actions";
 import "./searchbar.scss";
 
-const SearchBar = ({ onSearch }) => {
-  function handleOnSearch() {
-    const input = document.getElementById("Search");
-    onSearch(input.value);
+const SearchBar = () => {
+  function handleOnSearch(e) {
+    handleSearch(e.target.value);
   }
+
+  let dispatch = useDispatch();
+
+  const handleSearch = (name) => {
+    dispatch(getByNames(name));
+  };
+
   return (
     <div>
       <input

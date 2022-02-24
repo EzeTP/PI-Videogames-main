@@ -1,15 +1,10 @@
-import Order from "../../components/order/Order";
 import {
   FETCH_GAMES,
-  All_FILTERS,
   GET_GAMES_BY_NAME,
   GET_DETAIL,
   CREATE_GAME,
   GET_GENRES,
-  ASC,
-  DESC,
   RATING_ASC,
-  RATING_DESC,
   FILTER_GENRE,
   FILTER_API,
   FILTER_DB,
@@ -115,6 +110,7 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         videogames: action.payload === "" ? state.videogamesDb : sorting,
       };
+
     default:
       return state;
   }

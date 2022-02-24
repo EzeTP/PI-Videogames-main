@@ -1,28 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useDispatch } from "react-redux";
-import {
-  FilterByOrder,
-  ratingAsc,
-  ratingDesc,
-  sortAsc,
-  sortDesc,
-} from "../../redux/actions/actions";
+import { FilterByOrder, ratingAsc } from "../../redux/actions/actions";
 import "./order.scss";
 
 const Order = () => {
   let dispatch = useDispatch();
-
-  /*  const handleOnChange = (e) => {
-    if (e.target.value === "asc") {
-      dispatch(sortAsc("asc"));
-    } else if (e.target.value === "desc") {
-      dispatch(sortDesc("desc"));
-    } else if (e.target.value === "ratingAsc") {
-      dispatch(ratingAsc("ratingAsc"));
-    } else if (e.target.value === "ratingDesc") {
-      dispatch(ratingDesc("ratingDesc"));
-    }
-  }; */
 
   const handleAlph = (e) => {
     if (e.target.value === "a-z") {
