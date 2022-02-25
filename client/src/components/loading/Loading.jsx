@@ -13,7 +13,10 @@ const Loading = () => {
   let arr = [img, img3, img5, img6, img7, img8, img9, img11];
   return (
     <div className="containerLoading">
-      <h1>LOADING...</h1>
+      <div className="container">
+        <div className="loader"></div>
+        <p className="message">Loading...</p>
+      </div>
       <div className="ImgContainer">
         <img src={arr[Math.floor(Math.random() * arr.length)]} alt="" />
       </div>
