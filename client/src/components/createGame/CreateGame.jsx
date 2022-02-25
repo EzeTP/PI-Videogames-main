@@ -3,13 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { createGame, getAllGenres } from "../../redux/actions/actions";
 import { useNavigate } from "react-router-dom";
 import "./createGame.scss";
-import {
-  regexName,
-  regexrating,
-  regexText,
-  regexUrl,
-  validateName,
-} from "./validations";
+import { regexrating, regexText, regexUrl } from "./validations";
 
 const CreateGame = () => {
   const genre = useSelector((state) => state.genres);
@@ -194,10 +188,11 @@ const CreateGame = () => {
                 values.genres.map((g, i) => <div key={i}>{g}</div>)
               ) : (
                 <p className="parrafo-genders-length">
-                  Solo se Permiten Seleccionar de 1 a 6 Genders, Porfavor
-                  elimina tu ultima opcion Seleccionada para completar el max de
-                  Genders permitido. Al intenta superar el limite se bloquearan
-                  las opciones, en caso de bloquearse Refresca la pagina
+                  Only 1 to 6 Genders are allowed to be Selected, Please Please
+                  remove your last selected option to complete the maximum
+                  number of Genders allowed. Attempting to exceed the limit will
+                  block the the options will be blocked, in case of blocking
+                  Refresh the page.
                 </p>
               )}
             </label>
@@ -234,22 +229,22 @@ const CreateGame = () => {
                 values.platforms.map((p, i) => <div key={i}>{p}</div>)
               ) : (
                 <p className="parrafo-genders-length">
-                  Solo se Permiten Seleccionar de 1 a 6 Plataformas, Porfavor
-                  elimina tu ultima opcion Seleccionada para completar el max de
-                  Platforms permitido. Al intenta superar el limite se
-                  bloquearan las opciones, en caso de bloquearse Refresca la
-                  Pagina
+                  Only 1 to 6 Platforms are allowed to be selected, Please
+                  Please remove your last selected option to complete the max of
+                  Platforms allowed. Platforms allowed. Attempting to exceed the
+                  limit will options will be blocked, in case of blocking
+                  Refresh the page.
                 </p>
               )}
             </label>
           </div>
           {values.platforms.length <= 6 && values.genres.length <= 6 ? (
             <button type="submit" className="boton">
-              Guardar
+              Save!
             </button>
           ) : (
             <button type="submit" className="boton">
-              Guardar{" "}
+              Save!
             </button>
           )}
         </form>

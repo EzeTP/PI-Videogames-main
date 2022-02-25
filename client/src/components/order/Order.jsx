@@ -1,4 +1,3 @@
-import React from "react";
 import { useDispatch } from "react-redux";
 import { FilterByOrder, ratingAsc } from "../../redux/actions/actions";
 import "./order.scss";
@@ -23,11 +22,11 @@ const Order = () => {
   return (
     <div>
       <select defaultValue={"default"} onChange={handleAlph}>
-        <option value="">ASC | DESC</option>
+        <option value=""> ALL </option>
         <option value="a-z"> A TO Z</option>
         <option value="z-a">Z TO A</option>
-        <option value="asc"> ASC </option>
-        <option value="desc"> DESC</option>
+        <option value="asc"> BEST RATING </option>
+        <option value="desc"> WORST RATING </option>
       </select>
     </div>
   );

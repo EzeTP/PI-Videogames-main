@@ -7,23 +7,10 @@ import webimg from "../../assets/World-Wide-Web-Transparent.png";
 import redditimg from "../../assets/reddit-logo-16.png";
 
 const DetailPage = () => {
-  /* let [apiData, updateapiData] = useState([]); */
   let { id } = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  /*  let api = `http://localhost:3001/videogames/${id}`;
-  let { name, description, background_image } = apiData; */
-  /*   let dispatch = useDispatch(); */
-  /*   const regex = /<(?:.|\n)*?>/gm;*/
 
-  /*   useEffect(() => {
-    (async function () {
-      let data = await fetch(api).then((res) => res.json());
-      updateapiData(data); // wait a little bit, untill our data it's fetch
-    })();
-  }, [api]);
- */
-  /* const result = data.description.replace(reg  ex, ""); */
   const handleOnClick = () => {
     navigate("/home");
   };

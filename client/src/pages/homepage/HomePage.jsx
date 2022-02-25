@@ -8,7 +8,9 @@ import Filter from "../../components/filter/Filter";
 const HomePage = () => {
   return (
     <div className="home">
-      <h1>Hello</h1>
+      <div className="span">
+        <span className="span1">EzeTP </span>
+      </div>
       <div className="searchContainer">
         <Filter />
         <Order />

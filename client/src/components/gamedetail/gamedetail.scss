@@ -48,11 +48,28 @@
       font-weight: 400;
       margin-left: 20px;
       a {
+        font-size: 13px;
         color: inherit;
         text-decoration: none;
         img {
           width: 4rem;
           height: 4rem;
+        }
+      }
+      button {
+        background: #061e2e;
+        background-image: linear-gradient(to bottom, #061e2e, #1fdb35);
+        border-radius: 28px;
+        font-family: Arial;
+        color: #0cf000;
+        font-size: 20px;
+        padding: 15px 20px 15px 20px;
+        text-decoration: none;
+        margin-left: 70%;
+        &:hover {
+          background: #0dbf0d;
+          background-image: linear-gradient(to bottom, #0dbf0d, #000000);
+          text-decoration: none;
         }
       }
     }
