@@ -1,89 +1,39 @@
 const axios = require("axios");
 const { Videogame, Genre } = require("../db");
 const { APIKEY } = process.env;
-const { Op } = require("sequelize");
 
-/* const getAllGames = async (req, res, next) => {
-  try {
-    const { name, page } = req.query;
-    let apiGames = [];
-    let dbGames = [];
-    const searching = {
-      where: {
-        name: {
-          [Op.iLike]: `%${name}%`,
-        },
-      },
-      include: {
-        model: Genre,
-        attributes: ["id", "name"],
-        through: {
-          attributes: [],
-        },
-      },
-    };
-    if (name) {
-      apiGames = await axios(
-        `https://api.rawg.io/api/games?search=${name}&key=${APIKEY}`
-      );
-      dbGames = await Videogame.findAll(searching);
-    } else {
-      apiGames = await axios(
-        `https://api.rawg.io/api/games?key=${APIKEY}&page_size=40&page=${page}`
-      );
-      if (page === 1) dbGames = await Videogame.findAll({ include: Genre });
-    }
-    const filterApiGames = apiGames.data.results.map((g) => {
-      return {
-        id: g.id,
-        name: g.name,
-        rating: g.rating,
-        genres: g.genres.map((e) => e.name),
-        img: g.background_image,
-      };
-    });
-    const videogames = [...dbGames, ...filterApiGames];
-    if (name) {
-      if (videogames.length > 0) return res.send(videogames.slice(0, 15));
-      return res.status(404).send("no se consiguio este videojuego");
-    }
-    res.send(videogames);
-  } catch (err) {
-    next(err);
-  }
-}; */
 const getAllGames = async (req, res, next) => {
   try {
-    let pedido, pedi2, pedi3, pedidofinal;
-    if (req.query.name) {
-      gameName = req.query.name;
-      pedido = await axios.get(
-        `https://api.rawg.io/api/games?search=${gameName}&key=${APIKEY}`
+    const { name } = req.query;
+    let request, request2, request3, finalrequest;
+    if (name) {
+      request = await axios.get(
+        `https://api.rawg.io/api/games?search=${name}&key=${APIKEY}`
       );
-      pedidofinal = pedido.data.results;
+      finalrequest = request.data.results;
     } else {
-      pedido = await axios.get(
+      request = await axios.get(
         `https://api.rawg.io/api/games?key=${APIKEY}&page_size=40`
       );
 
-      pedi2 = await axios.get(
+      request2 = await axios.get(
         `https://api.rawg.io/api/games?key=${APIKEY}&page=2&page_size=40`
       );
 
-      pedi3 = await axios.get(
+      request3 = await axios.get(
         `https://api.rawg.io/api/games?key=${APIKEY}&page=5&page_size=20`
       );
 
-      pedidofinal = [
-        ...pedido.data.results,
-        ...pedi2.data.results,
-        ...pedi3.data.results,
+      finalrequest = [
+        ...request.data.results,
+        ...request2.data.results,
+        ...request3.data.results,
       ];
     }
 
     const pedidoBaseDatos = await Videogame.findAll({ include: Genre });
-    if (pedidofinal || pedidoBaseDatos) {
-      let aux = pedidofinal.map((game) => {
+    if (finalrequest || pedidoBaseDatos) {
+      let aux = finalrequest.map((game) => {
         return {
           name: game.name,
           genres: game.genres,
@@ -93,13 +43,13 @@ const getAllGames = async (req, res, next) => {
         };
       });
       let final = aux;
-      if (req.query.name) {
+      if (name) {
         final = final.slice(0, 15);
       } else {
         final = [...pedidoBaseDatos, ...aux];
       }
 
-      if (req.query.genreName && final) {
+      /*  if (req.query.genreName && final) {
         let selectedGenre = req.query.genreName;
         final = final.filter((game) => {
           return game.genres
@@ -108,7 +58,7 @@ const getAllGames = async (req, res, next) => {
             })
             .includes(selectedGenre);
         }); //fin filter
-      }
+      } */
 
       if (final[0]) {
         res.send(final);
