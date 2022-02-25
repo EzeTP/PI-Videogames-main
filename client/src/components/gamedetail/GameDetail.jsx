@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { getDetail } from "../../redux/actions/actions";
 import "./gamedetail.scss";
-import webimg from "../../assets/World-Wide-Web-Transparent.png";
+import webimg from "../../assets/web.png";
 import redditimg from "../../assets/reddit-logo-16.png";
 
 const DetailPage = () => {
