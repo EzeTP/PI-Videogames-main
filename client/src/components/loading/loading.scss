@@ -2,15 +2,18 @@
   width: 100%;
   height: 100%;
   display: flex;
-  align-items: center;
-  align-content: center;
-  justify-content: center;
+
+  position: relative;
+  margin-bottom: 60%;
+  h1 {
+    margin-bottom: 70%;
+  }
   .ImgContainer {
     width: 100%;
+    height: 100%;
     img {
-      position: absolute;
-      width: 30rem;
-      height: 20rem;
+      width: 20rem;
+      height: 15rem;
     }
   }
 }
