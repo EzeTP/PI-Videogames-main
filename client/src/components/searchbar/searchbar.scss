@@ -1,7 +1,9 @@
+@import "../../global.scss";
+
 input {
   background-color: transparent;
   border: none;
-  color: #00ff40;
+  color: $mainColor;
   font-size: 1.5rem;
   font-weight: 300;
   width: 15rem;
@@ -11,5 +13,5 @@ input {
   outline: none;
 }
 ::placeholder {
-  color: #00ff40;
+  color: $mainColor;
 }

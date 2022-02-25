@@ -1,14 +1,16 @@
+@import "../../global.scss";
+
 select {
   width: 20rem;
   background: none;
-  color: #00ff40;
+  color: $mainColor;
   height: 2rem;
   font-size: 17px;
   border: none;
   margin-right: 30px;
   option {
     border: none;
-    color: #00ff40;
+    color: $mainColor;
     background: #000000;
     outline: none;
   }
