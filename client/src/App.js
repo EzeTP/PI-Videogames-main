@@ -1,5 +1,5 @@
 import "./App.scss";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import HomePage from "./pages/homepage/HomePage";
 import LandingPage from "./pages/landingpage/LandingPage";
 import DetailPage from "./components/gamedetail/GameDetail";

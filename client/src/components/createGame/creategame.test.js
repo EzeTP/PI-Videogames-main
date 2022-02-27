@@ -5,22 +5,6 @@ import { Provider } from "react-redux";
 import store from "../../redux/store/store";
 import { BrowserRouter } from "react-router-dom";
 
-/* describe("crear el form", () => {
-  const componente = (
-    <Provider store={store}>
-      <BrowserRouter>
-        <CreateGame />
-      </BrowserRouter>
-    </Provider>
-  );
-
-  it("crear form fowada", () => {
-    render(componente);
-    const testing = screen.getByText(/Description/i);
-    expect(testing).toBeInTheDocument();
-  });
-}); */
-
 describe("<Form /> Mounted", () => {
   const component = (
     <Provider store={store}>
@@ -36,10 +20,10 @@ describe("<Form /> Mounted", () => {
     expect(element.className).toBe("nameForm");
   });
 
-  it('El form debe tener un label que diga: "Name:"', () => {
-    render(component);
-    const element = screen.getByTitle(/Released/i);
-    expect(element.className).toBe("releasedForm");
+  it('El form debe tener un label que tenga de titulo: "Released:"', () => {
+    const { container } = render(component);
+    const element = container.querySelectorAll("input")[1];
+    expect(element.title).toBe("Released");
   });
 
   /* it('El form debe tener un label que diga: "Password:"', () => {

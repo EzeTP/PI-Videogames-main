@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  fetchAllGames,
   filterApi,
   filterDb,
   filterGender,
@@ -23,7 +24,7 @@ const Filter = () => {
     } else if (e.target.value === "db") {
       dispatch(filterDb("db"));
     } else if (e.target.value === "All") {
-      dispatch(filterGender("All"));
+      dispatch(fetchAllGames("All"));
     }
   };
   useEffect(() => {

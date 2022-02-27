@@ -18,7 +18,10 @@ const Loading = () => {
         <p className="message">Loading...</p>
       </div>
       <div className="ImgContainer">
-        <img src={arr[Math.floor(Math.random() * arr.length)]} alt="" />
+        <img
+          src={arr[Math.floor(Math.random() * arr.length)]}
+          alt="not found"
+        />
       </div>
     </div>
   );

@@ -21,7 +21,7 @@ const getAllGames = async (req, res, next) => {
       );
 
       request3 = await axios.get(
-        `https://api.rawg.io/api/games?key=${APIKEY}&page=5&page_size=20`
+        `https://api.rawg.io/api/games?key=${APIKEY}&page=6&page_size=20`
       );
 
       finalrequest = [
@@ -31,7 +31,9 @@ const getAllGames = async (req, res, next) => {
       ];
     }
 
-    const pedidoBaseDatos = await Videogame.findAll({ include: Genre });
+    const pedidoBaseDatos = await Videogame.findAll({
+      include: Genre,
+    });
     if (finalrequest || pedidoBaseDatos) {
       let aux = finalrequest.map((game) => {
         return {
@@ -43,32 +45,16 @@ const getAllGames = async (req, res, next) => {
         };
       });
       let final = aux;
+
       if (name) {
         final = final.slice(0, 15);
       } else {
         final = [...pedidoBaseDatos, ...aux];
       }
 
-      /*  if (req.query.genreName && final) {
-        let selectedGenre = req.query.genreName;
-        final = final.filter((game) => {
-          return game.genres
-            ?.map((gnr) => {
-              return gnr.name;
-            })
-            .includes(selectedGenre);
-        }); //fin filter
-      } */
-
-      if (final[0]) {
-        res.send(final);
-      } else {
-        res.json({
-          message: "Ningun videojuego cumple con los parametros de busqueda",
-        });
-      }
+      res.send(final);
     } else {
-      res.json({ message: "Error, algo salio mal" });
+      res.json({ message: "Something got wrong" });
     }
   } catch (e) {
     next(e);
@@ -109,7 +95,6 @@ const getGamesById = async (req, res, next) => {
         additionalImg: apiurl.background_image_additional,
         website: apiurl.website,
         metacritic: apiurl.metacritic,
-        metacriticUrl: apiurl.metacritic_url,
         reddit: apiurl.reddit_url,
       };
     }
