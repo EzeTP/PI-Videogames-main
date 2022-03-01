@@ -3,7 +3,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { createGame, getAllGenres } from "../../redux/actions/actions";
 import { useNavigate } from "react-router-dom";
 import "./createGame.scss";
-import { regexrating, regexText, regexUrl } from "./validations";
+import {
+  regexrating,
+  regexText,
+  regexUrl,
+  validateName,
+  validateDescription,
+} from "./validations";
 
 const CreateGame = () => {
   const genre = useSelector((state) => state.genres);
@@ -50,16 +56,22 @@ const CreateGame = () => {
   };
 
   const handleOnChange = (e) => {
-    setValues({
-      ...values,
-      [e.target.name]: e.target.value,
-    });
+    if (validateName(e.target.value))
+      setValues({
+        ...values,
+        [e.target.name]: e.target.value,
+      });
   };
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    dispatch(createGame(values));
-    navigate("/home");
+    if (values.name && values.rating < 5 && values.description) {
+      dispatch(createGame(values));
+      alert("juego creado");
+      navigate("/home");
+    } else {
+      alert("faltan datos");
+    }
   };
 
   useEffect(() => {
@@ -93,7 +105,6 @@ const CreateGame = () => {
           </div>
           <input
             title="Name"
-            required
             type="text"
             className="nameForm"
             placeholder="e.g 'Henrymon' "
@@ -122,11 +133,10 @@ const CreateGame = () => {
             required
             type="number"
             className="ratingForm"
-            placeholder="0 - 5  "
+            placeholder="0 - 5"
             value={values.rating}
             onChange={handleOnChange}
             name="rating"
-            pattern={regexrating}
           />
           <div>
             <label> Image </label>
@@ -140,7 +150,6 @@ const CreateGame = () => {
             value={values.image}
             onChange={handleOnChange}
             name="image"
-            pattern={regexUrl}
           />
           <div>
             <label>Description</label>
@@ -155,7 +164,6 @@ const CreateGame = () => {
             name="description"
             onChange={handleOnChange}
             title="maximo 2000 caracteres"
-            pattern={regexText}
           ></textarea>
           <div className="genresForm">
             <div>

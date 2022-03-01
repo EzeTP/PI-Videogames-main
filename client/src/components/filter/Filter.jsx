@@ -5,6 +5,7 @@ import {
   filterApi,
   filterDb,
   filterGender,
+  filterTest,
   getAllGenres,
 } from "../../redux/actions/actions";
 
@@ -20,12 +21,14 @@ const Filter = () => {
 
   const handleApiorDb = (e) => {
     if (e.target.value === "api") {
-      dispatch(filterApi("api"));
+      dispatch(filterApi());
     } else if (e.target.value === "db") {
-      dispatch(filterDb("db"));
+      dispatch(filterDb());
     } else if (e.target.value === "All") {
-      dispatch(fetchAllGames("All"));
-    }
+      dispatch(fetchAllGames());
+    } /* else if (e.target.value === "test") {
+      dispatch(filterTest());
+    } */
   };
   useEffect(() => {
     dispatch(getAllGenres());
@@ -42,6 +45,7 @@ const Filter = () => {
           <option value="All">ALL</option>
           <option value="api">API</option>
           <option value="db">DB</option>
+          {/*  <option value="test">DB</option> */}
         </select>
       </div>
       <div className="containerGenres">

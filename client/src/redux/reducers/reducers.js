@@ -9,6 +9,7 @@ import {
   FILTER_API,
   FILTER_DB,
   FILTER_ALPH,
+  PROBANDO,
 } from "../actions/actions";
 
 const initialState = {
@@ -73,20 +74,29 @@ export default function rootReducer(state = initialState, action) {
       let db = state.videogamesDb.filter((e) => !Number.isInteger(e.id));
       return {
         ...state,
-        videogames: db.length === 0 ? "empty" : db,
+        videogames: db.length === 0 ? "" : db,
       };
+
+    /*  case PROBANDO:
+      let copy = state.videogamesDb.filter((e) => e.rating <= 4);
+      return {
+        ...state,
+        videogames: copy,
+      }; */
 
     case FILTER_ALPH:
       const Alph = state.videogames;
       const noRepeat = Alph.slice().sort((a, b) => {
-        if (a.name.toLowerCase() > b.name.toLowerCase()) {
+        /*  if (a.name.toLowerCase() > b.name.toLowerCase()) {
           return 1;
         }
         if (b.name.toLowerCase() > a.name.toLowerCase()) {
           return -1;
         }
-        return 0;
+        return 0; */
+        return a.name.localeCompare(b.name);
       });
+
       let sortedGames =
         action.payload === "a-z" ? noRepeat : noRepeat.reverse();
       return {

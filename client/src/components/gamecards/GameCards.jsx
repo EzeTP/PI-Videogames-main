@@ -60,31 +60,28 @@ const GameCards = () => {
       </div>
       <div className="order"></div>
       <div className="gameList">
-        {
-          (console.log(final[state.paginaActual].length),
-          final[state.paginaActual].length === 0 ? (
-            <div className="loading">
-              <Loading />
-            </div>
-          ) : (
-            final[state.paginaActual].map((game) => (
-              <GameCard
-                key={game.id}
-                id={game.id}
-                name={game.name}
-                rating={game.rating}
-                img={game.image}
-                genres={
-                  game.Genres
-                    ? game.Genres.map((g) => g.name)
-                    : game.genres.map((g) => {
-                        return g.name;
-                      })
-                }
-              />
-            ))
+        {final[state.paginaActual].length === 0 ? (
+          <div className="loading">
+            <Loading />
+          </div>
+        ) : (
+          final[state.paginaActual].map((game) => (
+            <GameCard
+              key={game.id}
+              id={game.id}
+              name={game.name}
+              rating={game.rating}
+              img={game.image}
+              genres={
+                game.Genres
+                  ? game.Genres.map((g) => g.name)
+                  : game.genres.map((g) => {
+                      return g.name;
+                    })
+              }
+            />
           ))
-        }
+        )}
       </div>
     </div>
   );
