@@ -12,18 +12,22 @@ const HomePage = () => {
     navigate("/create");
   };
 
+  const handleClick = () => {
+    navigate("/home");
+  };
+
   return (
     <div className="home">
-      <div className="span">
-        <span className="span1">EzeTP </span>
-        <span className="span2" onClick={handleOnClick}>
-          Create A Game!{" "}
-        </span>
-      </div>
       <div className="searchContainer">
+        <span className="span1" onClick={handleClick}>
+          VideoGames Project by EzeTP
+        </span>
         <Filter />
         <Order />
         <SearchBar />
+        <span className="span2" onClick={handleOnClick}>
+          Create a new game!
+        </span>
       </div>
       <div className="container">
         <GameCards />

@@ -9,7 +9,6 @@ import {
   FILTER_API,
   FILTER_DB,
   FILTER_ALPH,
-  PROBANDO,
 } from "../actions/actions";
 
 const initialState = {
@@ -76,13 +75,6 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         videogames: db.length === 0 ? "" : db,
       };
-
-    /*  case PROBANDO:
-      let copy = state.videogamesDb.filter((e) => e.rating <= 4);
-      return {
-        ...state,
-        videogames: copy,
-      }; */
 
     case FILTER_ALPH:
       const Alph = state.videogames;

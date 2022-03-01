@@ -1,4 +1,7 @@
+@import "../../global.scss";
+
 .Container {
+  font-family: "Press Start 2P";
   display: flex;
   justify-content: center;
   .formContainer {
@@ -6,32 +9,56 @@
     display: flex;
     width: 30rem;
     margin-top: 40px;
-    border: 1px solid #00ff40;
+    border: 1px solid $thirdColor;
     label {
       font-size: 20px;
+      color: $thirdColor;
     }
     input {
       width: 100%;
       background: none;
-      color: #00ff40;
+      color: $thirdColor;
       border: none;
       outline: none;
     }
+    p {
+      color: $thirdColor;
+      font-size: 20px;
+      font-weight: bold;
+    }
     textarea {
       background: none;
-      color: #00ff40;
-      border: 1px dotted #00ff40;
+      color: $thirdColor;
+      border: 1px dotted $thirdColor;
       outline: none;
     }
     select {
+      margin-top: 5px;
       height: 10rem;
       background: none;
-      color: #00ff40;
-      border: 1px dotted #00ff40;
+      color: $thirdColor;
+      border: 1px dotted $thirdColor;
       outline: none;
+      width: 100%;
     }
     .platformsForm {
       margin-top: 20px;
+    }
+  }
+
+  button {
+    background: transparent;
+    /* background-image: linear-gradient(to bottom, #061e2e, #1fdb35); */
+    border-radius: 28px;
+    color: #fff;
+    font-size: 20px;
+    padding: 10px 15px 10px 15px;
+    text-decoration: none;
+    margin-left: 70%;
+    &:hover {
+      background: transparent;
+      /* background-image: linear-gradient(to bottom, #0dbf0d, #000000); */
+      text-decoration: none;
     }
   }
 }

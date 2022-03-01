@@ -1,17 +1,18 @@
 @import "../../global.scss";
 
 input {
+  font-family: "Press Start 2P";
   background-color: transparent;
   border: none;
-  color: $mainColor;
-  font-size: 1.5rem;
+  margin-top: 6px;
+  color: $thirdColor;
+  font-size: 1rem;
   font-weight: 300;
   width: 15rem;
   display: flex;
-  border-radius: 12px;
-  margin-right: 70px;
+  margin-right: 20px;
   outline: none;
 }
 ::placeholder {
-  color: $mainColor;
+  color: $thirdColor;
 }

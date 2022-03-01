@@ -1,6 +1,8 @@
+@import "../../global.scss";
+
 body {
   background: #24282f;
-  font-family: "Roboto";
+  font-family: "Press Start 2P";
   scroll-behavior: smooth;
   scroll-snap-type: y mandatory;
   scrollbar-width: none;
@@ -58,6 +60,7 @@ body {
     }
 
     figcaption {
+      font-family: sans-serif;
       display: flex;
       align-items: center;
       flex-direction: column;
@@ -67,13 +70,13 @@ body {
       right: 0;
       padding: 20px;
       padding-bottom: 10px;
-      font-size: 22px;
+      font-size: 20px;
       background: none;
       color: #fff;
       transform: translateY(100%);
       transition: 0.3s;
       font-weight: bold;
-      text-shadow: 0 0 3px #000000, 0 0 5px #0a996e;
+      text-shadow: 0 0 3px #000000, 0 0 5px $thirdColor;
     }
     &:hover figcaption,
     &:focus figcaption,

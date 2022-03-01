@@ -3,13 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { createGame, getAllGenres } from "../../redux/actions/actions";
 import { useNavigate } from "react-router-dom";
 import "./createGame.scss";
-import {
-  regexrating,
-  regexText,
-  regexUrl,
-  validateName,
-  validateDescription,
-} from "./validations";
 
 const CreateGame = () => {
   const genre = useSelector((state) => state.genres);
@@ -56,11 +49,10 @@ const CreateGame = () => {
   };
 
   const handleOnChange = (e) => {
-    if (validateName(e.target.value))
-      setValues({
-        ...values,
-        [e.target.name]: e.target.value,
-      });
+    setValues({
+      ...values,
+      [e.target.name]: e.target.value,
+    });
   };
 
   const handleOnSubmit = (e) => {
@@ -111,6 +103,7 @@ const CreateGame = () => {
             value={values.name}
             onChange={handleOnChange}
             name="name"
+            required
           />
           <div>
             <label> Released Date</label>
@@ -163,14 +156,14 @@ const CreateGame = () => {
             value={values.description}
             name="description"
             onChange={handleOnChange}
-            title="maximo 2000 caracteres"
+            title="Description"
           ></textarea>
           <div className="genresForm">
             <div>
               <label> Genres </label>
             </div>
             <select
-              title="at least 1 opcion"
+              title="Genres"
               required
               multiple
               className="genresForm"
@@ -198,9 +191,8 @@ const CreateGame = () => {
                 <p className="parrafo-genders-length">
                   Only 1 to 6 Genders are allowed to be Selected, Please Please
                   remove your last selected option to complete the maximum
-                  number of Genders allowed. Attempting to exceed the limit will
-                  block the the options will be blocked, in case of blocking
-                  Refresh the page.
+                  number of Genders allowed. Attempting to exceed the limit the
+                  options will be blocked. In case of blocking Refresh the page.
                 </p>
               )}
             </label>
@@ -211,7 +203,7 @@ const CreateGame = () => {
               <label> Platforms </label>
             </div>
             <select
-              title="at least 1 option"
+              title="Platforms"
               required
               multiple
               className="platForm"
@@ -220,9 +212,9 @@ const CreateGame = () => {
               onChange={handlePlatSelec}
             >
               {values.platforms.length <= 7 ? (
-                plataformas.map((e) => {
+                plataformas.map((e, i) => {
                   return (
-                    <option key={e.id} value={e}>
+                    <option key={i} value={e}>
                       {e}
                     </option>
                   );
@@ -240,21 +232,15 @@ const CreateGame = () => {
                   Only 1 to 6 Platforms are allowed to be selected, Please
                   Please remove your last selected option to complete the max of
                   Platforms allowed. Platforms allowed. Attempting to exceed the
-                  limit will options will be blocked, in case of blocking
-                  Refresh the page.
+                  limit, options will be blocked. In case of blocking Refresh
+                  the page.
                 </p>
               )}
             </label>
           </div>
-          {values.platforms.length <= 6 && values.genres.length <= 6 ? (
-            <button type="submit" className="boton">
-              Save!
-            </button>
-          ) : (
-            <button type="submit" className="boton">
-              Save!
-            </button>
-          )}
+          <button type="submit" className="boton">
+            Save!
+          </button>
         </form>
       </div>
     </div>

@@ -1,17 +1,18 @@
 @import "../../global.scss";
 
 select {
+  font-family: "Press Start 2P";
   width: 20rem;
   background: none;
-  color: $mainColor;
+  color: $thirdColor;
   height: 2rem;
-  font-size: 17px;
+  font-size: 1rem;
   border: none;
   margin-right: 30px;
   font-weight: 400;
   option {
     border: none;
-    color: $mainColor;
+    color: $thirdColor;
     background: #000000;
     outline: none;
   }

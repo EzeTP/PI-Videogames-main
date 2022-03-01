@@ -15,6 +15,7 @@ const GameCards = () => {
 
   const [state, setState] = useState({
     paginaActual: 0,
+    paginaActual1: 1,
   });
 
   const handlePrev = (event) => {
@@ -32,6 +33,38 @@ const GameCards = () => {
     }
   };
 
+  const handleOnclick = (e) => {
+    if (e.target.value === "0") {
+      setState({
+        paginaActual: 0,
+      });
+    } else if (e.target.value === "1") {
+      setState({
+        paginaActual: 1,
+      });
+    } else if (e.target.value === "2") {
+      setState({
+        paginaActual: 2,
+      });
+    } else if (e.target.value === "3") {
+      setState({
+        paginaActual: 3,
+      });
+    } else if (e.target.value === "4") {
+      setState({
+        paginaActual: 4,
+      });
+    } else if (e.target.value === "5") {
+      setState({
+        paginaActual: 5,
+      });
+    } else if (e.target.value === "6") {
+      setState({
+        paginaActual: 6,
+      });
+    }
+  };
+
   let page1, page2, page3, page4, page5, page6, page7;
   page1 = videogames.slice(0, 15);
   page2 = videogames.slice(15, 30);
@@ -43,16 +76,34 @@ const GameCards = () => {
   page7 = videogames.slice(80, 100);
   let final = [page1, page2, page3, page4, page5, page6, page7];
 
-  for (let i = final.length - 1; i > 0; i--) {
-    if (!final[i].length) {
-      final.pop();
-    }
-  }
+  console.log(state.paginaActual);
+
   return (
     <div className="cardContainer">
       <div className="pagination">
         <button value={1} onClick={handlePrev}>
           PREV
+        </button>
+        <button value="0" onClick={handleOnclick}>
+          0
+        </button>
+        <button value="1" onClick={handleOnclick}>
+          1
+        </button>
+        <button value="2" onClick={handleOnclick}>
+          2
+        </button>
+        <button value="3" onClick={handleOnclick}>
+          3
+        </button>
+        <button value="4" onClick={handleOnclick}>
+          4
+        </button>
+        <button value="5" onClick={handleOnclick}>
+          5
+        </button>
+        <button value="6" onClick={handleOnclick}>
+          6
         </button>
         <button value={1} onClick={handleNext}>
           NEXT

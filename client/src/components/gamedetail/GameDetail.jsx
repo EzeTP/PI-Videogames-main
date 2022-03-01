@@ -79,11 +79,21 @@ const DetailPage = () => {
           <div className="containerDescr">
             <h1>Description</h1>
             <p dangerouslySetInnerHTML={{ __html: game.description }}></p>
-            <a className="website" href={game.website} target="_blank">
+            <a
+              className="website"
+              href={game.website}
+              target="_blank"
+              rel="noreferrer"
+            >
               Check their website!
               <img src={webimg} alt="" />
             </a>
-            <a className="reddit" href={game.reddit} target="_blank">
+            <a
+              className="reddit"
+              href={game.reddit}
+              target="_blank"
+              rel="noreferrer"
+            >
               Check their Reddit!
               <img src={redditimg} alt="" />
             </a>
