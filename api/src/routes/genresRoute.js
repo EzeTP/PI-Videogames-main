@@ -2,8 +2,8 @@ const { Router } = require("express");
 
 const router = Router();
 
-const { getGender } = require("../controllers/genreController");
+const { getGenre } = require("../controllers/genreController");
 
-router.get("/", getGender);
+router.get("/", getGenre);
 
 module.exports = router;

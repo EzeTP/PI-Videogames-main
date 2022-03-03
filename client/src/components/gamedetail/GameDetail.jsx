@@ -48,12 +48,7 @@ const DetailPage = () => {
               </span>
             </div>
             <div className="metacritic">
-              <span>
-                Metacritics:{" "}
-                {game.metacritic
-                  ? game.metacritic
-                  : "Not metacritic rating found"}
-              </span>
+              <span>Metacritics: {game.metacritic ? game.metacritic : ""}</span>
             </div>
             <div className="platforms">
               <span>Platforms: {game.platforms?.map((p) => p).join(", ")}</span>{" "}

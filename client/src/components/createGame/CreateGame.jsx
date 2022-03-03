@@ -55,9 +55,49 @@ const CreateGame = () => {
     });
   };
 
+  const handleName = (e) => {
+    const regex = /^[a-zA-Z0-9]+$/;
+    const result = regex.test(e.target.value);
+    if (result) {
+      setValues({
+        ...values,
+        [e.target.name]: e.target.value,
+      });
+    } else if (!result) {
+      setValues({
+        ...values,
+        [e.target.name]: "",
+      });
+      alert("Only letters and Numbers !");
+    }
+  };
+
+  const handleRating = (e) => {
+    const regex = /^[1-5]+$/;
+    const result = regex.test(e.target.value);
+    if (result) {
+      setValues({
+        ...values,
+        [e.target.name]: e.target.value,
+      });
+    } else alert("Rating from 1 to 5 only !!");
+  };
+
+  const handleDescription = (e) => {
+    e.preventDefault();
+    const regex = /^[!@#$%^&*()',.?":{}|<>a-zA-Z0-9\s]{1,700}$/;
+    const result = regex.test(e.target.value);
+    if (result) {
+      setValues({
+        ...values,
+        [e.target.name]: e.target.value,
+      });
+    } else alert("You reach the max characters allowed :( sorry!");
+  };
+
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    if (values.name && values.rating < 5 && values.description) {
+    if (values.name && values.rating && values.description && values.image) {
       dispatch(createGame(values));
       alert("juego creado");
       navigate("/home");
@@ -101,9 +141,10 @@ const CreateGame = () => {
             className="nameForm"
             placeholder="e.g 'Henrymon' "
             value={values.name}
-            onChange={handleOnChange}
+            onChange={handleName}
             name="name"
             required
+            autoComplete="none"
           />
           <div>
             <label> Released Date</label>
@@ -126,9 +167,9 @@ const CreateGame = () => {
             required
             type="number"
             className="ratingForm"
-            placeholder="0 - 5"
+            placeholder="1 - 5"
             value={values.rating}
-            onChange={handleOnChange}
+            onChange={handleRating}
             name="rating"
           />
           <div>
@@ -148,14 +189,13 @@ const CreateGame = () => {
             <label>Description</label>
           </div>
           <textarea
-            required
             className="descriptionForm"
             placeholder="A brief description of the game"
             rows="20"
             cols="50"
             value={values.description}
             name="description"
-            onChange={handleOnChange}
+            onChange={handleDescription}
             title="Description"
           ></textarea>
           <div className="genresForm">
@@ -189,10 +229,11 @@ const CreateGame = () => {
                 values.genres.map((g, i) => <div key={i}>{g}</div>)
               ) : (
                 <p className="parrafo-genders-length">
-                  Only 1 to 6 Genders are allowed to be Selected, Please Please
-                  remove your last selected option to complete the maximum
-                  number of Genders allowed. Attempting to exceed the limit the
-                  options will be blocked. In case of blocking Refresh the page.
+                  Only 1 to 6 Genres are allowed to be Selected, Please remove
+                  your last selected option to complete the maximum number of
+                  Genres allowed. Attempting to exceed the maximum allowed will
+                  cause a total block in the options. In case of blocking
+                  Refresh the page.
                 </p>
               )}
             </label>
@@ -229,16 +270,24 @@ const CreateGame = () => {
                 values.platforms.map((p, i) => <div key={i}>{p}</div>)
               ) : (
                 <p className="parrafo-genders-length">
-                  Only 1 to 6 Platforms are allowed to be selected, Please
-                  Please remove your last selected option to complete the max of
-                  Platforms allowed. Platforms allowed. Attempting to exceed the
-                  limit, options will be blocked. In case of blocking Refresh
-                  the page.
+                  Only 1 to 6 Platforms are allowed to be Selected, Please
+                  remove your last selected option to complete the maximum
+                  number of Platforms allowed. Attempting to exceed the maximum
+                  allowed will cause a total block in the options. In case of
+                  blocking Refresh the page.
                 </p>
               )}
             </label>
           </div>
-          <button type="submit" className="boton">
+          <button
+            type="submit"
+            className="boton"
+            style={
+              values.platforms.length > 6 || values.genres.length > 6
+                ? { display: "none" }
+                : { display: "block" }
+            }
+          >
             Save!
           </button>
         </form>

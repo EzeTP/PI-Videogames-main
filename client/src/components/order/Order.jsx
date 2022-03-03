@@ -1,5 +1,9 @@
 import { useDispatch } from "react-redux";
-import { FilterByOrder, ratingAsc } from "../../redux/actions/actions";
+import {
+  FilterByOrder,
+  probando,
+  ratingAsc,
+} from "../../redux/actions/actions";
 import "./order.scss";
 
 const Order = () => {
@@ -16,7 +20,9 @@ const Order = () => {
       dispatch(ratingAsc("asc"));
     } else if (e.target.value === "desc") {
       dispatch(ratingAsc("desc"));
-    }
+    } /*  else if (e.target.value === "meta") {
+      dispatch(probando("meta"));
+    } */
   };
 
   return (
@@ -25,8 +31,9 @@ const Order = () => {
         <option value=""> ALL </option>
         <option value="a-z"> A TO Z</option>
         <option value="z-a">Z TO A</option>
-        <option value="asc"> BEST RATING </option>
-        <option value="desc"> WORST RATING </option>
+        <option value="asc"> Asc Rating </option>
+        <option value="desc"> Dec Rating </option>
+        {/*         <option value="meta"> Dec Rating </option> */}
       </select>
     </div>
   );

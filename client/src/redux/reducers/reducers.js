@@ -9,6 +9,7 @@ import {
   FILTER_API,
   FILTER_DB,
   FILTER_ALPH,
+  PROBANDO,
 } from "../actions/actions";
 
 const initialState = {
@@ -112,6 +113,12 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         videogames: action.payload === "" ? state.videogamesDb : sorting,
       };
+    /* case PROBANDO:
+      let meta = state.videogamesDb.filter((e) => e.metacritic < 50);
+      return {
+        ...state,
+        videogames: meta,
+      }; */
 
     default:
       return state;

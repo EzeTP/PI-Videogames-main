@@ -13,7 +13,7 @@ const HomePage = () => {
   };
 
   const handleClick = () => {
-    navigate("/home");
+    navigate("/");
   };
 
   return (

@@ -34,6 +34,7 @@ const getAllGames = async (req, res, next) => {
     const pedidoBaseDatos = await Videogame.findAll({
       include: Genre,
     });
+
     if (finalrequest || pedidoBaseDatos) {
       let aux = finalrequest.map((game) => {
         return {
@@ -42,6 +43,7 @@ const getAllGames = async (req, res, next) => {
           image: game.background_image,
           rating: game.rating,
           id: game.id,
+          metacritic: game.metacritic,
         };
       });
       let final = aux;
@@ -107,13 +109,22 @@ const getGamesById = async (req, res, next) => {
 const newGame = async (req, res) => {
   const { name, description, released, rating, platforms, genres, image } =
     req.body;
-  const createGame = await Videogame.create({
+
+  console.log(description);
+  const newGame = {
     name,
     description,
     released,
     rating,
     platforms,
     image,
+  };
+  console.log(newGame);
+  const [createGame, alreadyCreated] = await Videogame.findOrCreate({
+    where: {
+      name: name,
+    },
+    defaults: newGame,
   });
 
   for (const i of genres) {
@@ -124,8 +135,11 @@ const newGame = async (req, res) => {
     });
     createGame.addGenres(gen);
   }
-
-  res.send(createGame);
+  if (alreadyCreated) {
+    res.send(alreadyCreated);
+  } else {
+    res.send(createGame);
+  }
 };
 
 module.exports = {

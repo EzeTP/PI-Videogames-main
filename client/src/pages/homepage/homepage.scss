@@ -13,6 +13,16 @@
     justify-content: flex-end;
     height: 100%;
     border: 2px dotted $thirdColor;
+    @include mobile {
+      width: 21rem;
+      margin-left: 5px;
+      height: 15rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      background-color: black;
+    }
     .span1 {
       margin-left: 10px;
       display: flex;
@@ -20,6 +30,10 @@
       font-size: 18px;
       font-weight: bold;
       margin-right: 30px;
+      @include mobile {
+        font-size: 10px;
+        margin-left: 30%;
+      }
     }
     .span2 {
       display: flex;
@@ -27,6 +41,10 @@
       font-size: 20px;
       font-weight: bold;
       margin-left: 40px;
+      @include mobile {
+        font-size: 10px;
+        margin-left: 50%;
+      }
     }
   }
 }

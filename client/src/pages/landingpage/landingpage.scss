@@ -1,23 +1,16 @@
 .landing {
   background-color: #000000;
-  /* h1 {
-    font-size: 50px;
+  .button {
+    border-radius: 5%;
+    width: 29rem;
+    height: 20.3rem;
+    position: absolute;
+    margin-left: 41.4rem;
+    margin-top: 7.3rem;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0.7;
   }
-  button {
-    background: #061e2e;
-    background-image: linear-gradient(to bottom, #061e2e, #1fdb35);
-    -webkit-border-radius: 28;
-    -moz-border-radius: 28;
-    border-radius: 28px;
-    font-family: Arial;
-    color: #0cf000;
-    font-size: 39px;
-    padding: 31px 40px 34px 40px;
-    text-decoration: none;
-    &:hover {
-      background: #0dbf0d;
-      background-image: linear-gradient(to bottom, #0dbf0d, #000000);
-      text-decoration: none;
-    }
-  } */
 }

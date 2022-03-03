@@ -12,6 +12,10 @@ input {
   display: flex;
   margin-right: 20px;
   outline: none;
+  @include mobile {
+    font-size: 13px;
+    width: 10rem;
+  }
 }
 ::placeholder {
   color: $thirdColor;

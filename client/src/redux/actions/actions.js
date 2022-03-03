@@ -9,6 +9,7 @@ export const FILTER_GENRE = "FILTER_GENRE";
 export const FILTER_API = "FILTER_API";
 export const FILTER_DB = "FILTER_DB";
 export const FILTER_ALPH = "FILTER_ALPH";
+/* export const PROBANDO = "PROBANDO"; */
 
 export const fetchAllGames = () => async (dispatch) => {
   try {
@@ -84,3 +85,7 @@ export const filterApi = (api) => {
 export const filterDb = (db) => {
   return { type: FILTER_DB, payload: db };
 };
+/* 
+export const probando = (e) => {
+  return { type: PROBANDO, payload: e };
+}; */

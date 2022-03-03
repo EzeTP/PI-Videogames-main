@@ -15,7 +15,6 @@ const GameCards = () => {
 
   const [state, setState] = useState({
     paginaActual: 0,
-    paginaActual1: 1,
   });
 
   const handlePrev = (event) => {
@@ -76,12 +75,12 @@ const GameCards = () => {
   page7 = videogames.slice(80, 100);
   let final = [page1, page2, page3, page4, page5, page6, page7];
 
-  console.log(state.paginaActual);
+  console.log(final[state.paginaActual]);
 
   return (
     <div className="cardContainer">
       <div className="pagination">
-        <button value={1} onClick={handlePrev}>
+        <button className="prev" value={1} onClick={handlePrev}>
           PREV
         </button>
         <button value="0" onClick={handleOnclick}>
@@ -105,7 +104,7 @@ const GameCards = () => {
         <button value="6" onClick={handleOnclick}>
           6
         </button>
-        <button value={1} onClick={handleNext}>
+        <button className="next" value={1} onClick={handleNext}>
           NEXT
         </button>
       </div>

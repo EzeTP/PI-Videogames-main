@@ -10,11 +10,19 @@ select {
   border: none;
   margin-right: 30px;
   font-weight: 400;
+  @include mobile {
+    font-size: 10px;
+    width: 5rem;
+  }
   option {
     border: none;
     color: $thirdColor;
     background: #000000;
     outline: none;
+    @include mobile {
+      font-size: 10px;
+      width: 5rem;
+    }
   }
 }
 
