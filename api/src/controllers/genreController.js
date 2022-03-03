@@ -5,7 +5,7 @@ const { APIKEY } = process.env;
 const getInfo = async (req, res, next) => {
   try {
     let genreUrl = await axios.get(
-      `https://api.rawg.io/api/genres?key=${APIKEY}`
+      `https://api.rawg.io/api/genres?key=399af3f31db44d1f8b6994ba83e4314f`
     );
 
     let infoArr = [];

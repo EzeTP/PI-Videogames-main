@@ -8,20 +8,20 @@ const getAllGames = async (req, res, next) => {
     let request, request2, request3, finalrequest;
     if (name) {
       request = await axios.get(
-        `https://api.rawg.io/api/games?search=${name}&key=${APIKEY}`
+        `https://api.rawg.io/api/games?search=${name}&key=399af3f31db44d1f8b6994ba83e4314f`
       );
       finalrequest = request.data.results;
     } else {
       request = await axios.get(
-        `https://api.rawg.io/api/games?key=${APIKEY}&page_size=40`
+        `https://api.rawg.io/api/games?key=399af3f31db44d1f8b6994ba83e4314f&page_size=40`
       );
 
       request2 = await axios.get(
-        `https://api.rawg.io/api/games?key=${APIKEY}&page=2&page_size=40`
+        `https://api.rawg.io/api/games?key=399af3f31db44d1f8b6994ba83e4314f&page=2&page_size=40`
       );
 
       request3 = await axios.get(
-        `https://api.rawg.io/api/games?key=${APIKEY}&page=6&page_size=20`
+        `https://api.rawg.io/api/games?key=399af3f31db44d1f8b6994ba83e4314f&page=6&page_size=20`
       );
 
       finalrequest = [
@@ -83,7 +83,9 @@ const getGamesById = async (req, res, next) => {
       });
     } else {
       const apiurl = (
-        await axios(`https://api.rawg.io/api/games/${id}?key=${APIKEY}`)
+        await axios(
+          `https://api.rawg.io/api/games/${id}?key=399af3f31db44d1f8b6994ba83e4314f`
+        )
       ).data;
       videogame = {
         id: apiurl.id,
