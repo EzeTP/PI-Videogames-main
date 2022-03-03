@@ -42,5 +42,4 @@ const getInfo = async (req, res, next) => {
 
 module.exports = {
   getInfo,
-  getGenre,
 };
