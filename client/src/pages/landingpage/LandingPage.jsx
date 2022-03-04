@@ -12,7 +12,7 @@ const LandingPage = () => {
 
   return (
     <div className="landing">
-      <div className="button">Enter</div>
+      <div className="button"></div>
       <video
         autoPlay
         loop
